@@ -1,0 +1,11 @@
+# Importar y exportar
+textotexto exportar
+```bash
+sudo mysqldump test_db > dump-test_db.sql
+sudo mysqldump --all-databases > todo.sql # no esta chido este pq tmb copia las tablas internas de mysql
+```
+
+textotexto test_db debe estar creada antes de importar
+```bash
+sudo mysql test_db < dump-test_db.sql
+```
