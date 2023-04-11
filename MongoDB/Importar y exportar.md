@@ -1,12 +1,12 @@
 # Importar y exportar
-## Exportar
-comando que exportara su cagadero en una carpeta (no recuerdo si era en la misma carpeta o en una nueva)
+## Exportar colección
+comando que exportara su cagadero en una carpeta llamada dump/
 ```bash
-sudo mongodump -u admin --authenticationDatabase admin -d exportar_esto
+sudo mongodump -u admin -d exportar_esto
 ```
 
-## Importar
-textotexto
+## Importar colección
+textotexto se crea automaticamente la database
 ```bash
-sudo mongorestore -u admin --authenticationDatabase admin -d importar_aca /ruta/del/dump/
+sudo mongorestore -u admin /ruta/del/dump/
 ```

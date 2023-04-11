@@ -1,4 +1,4 @@
-# Certificados con Certbot
+# Comando 'certbot'
 Se debera instalar ``certbot`` con el siguiente comando:
 ```bash
 sudo apt install certbot python3-certbot-apache -y
