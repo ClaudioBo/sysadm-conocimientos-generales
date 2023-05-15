@@ -53,7 +53,8 @@ sudo certbot certonly \
 ```
 
 ## Generar certificado normal y implementarlo automaticamente con el servidor web
-Cualquiera de los comandos de generacion de certificado se renovaran automaticamente (el cront se encuentra en `/etc/cron.d/certbot`) (talvez xd...)
+__No es necesario los pasos de Google Domains__  
+Cualquiera de los comandos de generacion de certificado se renovaran automaticamente (el cron se encuentra en `/etc/cron.d/certbot`) (talvez xd...)  
 Para hacerlo es con el siguiente comando, elegir el dominio y seguir sus pasos:  
 ```bash
 sudo certbot
