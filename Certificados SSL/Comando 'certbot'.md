@@ -1,4 +1,6 @@
 # Comando 'certbot'
+[Comandos obtenidos de la pagina oficial de Certbot](https://certbot.eff.org/instructions?ws=apache&os=pip&tab=wildcard)
+
 Para instalar `certbot` habra que instalar estas dependencias:
 ```bash
 sudo apt install python3-pip python3-venv libaugeas0
@@ -51,7 +53,7 @@ sudo certbot certonly \
 ```
 
 ## Generar certificado normal y implementarlo automaticamente con el servidor web
-Cualquiera de los comandos de generacion de certificado se renovaran automaticamente (el cront se encuentra en `/etc/cron.d/certbot`)  
+Cualquiera de los comandos de generacion de certificado se renovaran automaticamente (el cront se encuentra en `/etc/cron.d/certbot`) (talvez xd...)
 Para hacerlo es con el siguiente comando, elegir el dominio y seguir sus pasos:  
 ```bash
 sudo certbot
@@ -97,4 +99,3 @@ El comando te dara dos codigos (no le des `ENTER` al segundo codigo aún) los cu
 - `_acme-challenge.tu-dominio.com`
 
 Finalmente terminas la comprobación dando `ENTER` y listo, se tendra que renovar manualmente cada 90 días.
-
