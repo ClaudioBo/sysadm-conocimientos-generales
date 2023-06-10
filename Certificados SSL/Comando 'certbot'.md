@@ -50,6 +50,7 @@ sudo certbot certonly \
  --dns-google-domains-credentials '/etc/letsencrypt/ejemplo_credentials.ini' \
  --server 'https://acme-v02.api.letsencrypt.org/directory' \
  -d '*.tu-dominio.com'
+ -d 'tu-dominio.com'
 ```
 
 ## Generar certificado normal y implementarlo automaticamente con el servidor web
