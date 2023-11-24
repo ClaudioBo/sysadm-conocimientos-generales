@@ -61,6 +61,16 @@ Para hacerlo es con el siguiente comando, elegir el dominio y seguir sus pasos:
 sudo certbot
 ```
 
+## Forzar la generacion del cron de la renovación automatica de los certificados
+Solo correr este comando
+```bash
+sudo tee /etc/cron.d/certbot << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 */12 * * * root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(43200))' && certbot -q renew
+END
+```
+
 ## Generar certificado normal
 Para crear un certificado normal es con el siguiente comando y seguir sus pasos:
 ```bash
