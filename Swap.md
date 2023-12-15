@@ -8,6 +8,7 @@ sudo mkswap /swap_new.swap
 
 Despues se inicializa con el comando:
 ```bash
+sudo mkswap /swap_new.swap
 sudo swapon /swap_new.swap
 ```
 
