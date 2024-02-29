@@ -4,9 +4,14 @@ textotexto
 sed -i 's/VIEJO/NUEVO/g' ./ruta/del/*/archivo.txt
 ```
 
-remplazar toda la linea blabla
+remplazar toda la linea blabla si contiene palabra clave
 ```bash
 sed -i '/SQL_HOST/c SQL_HOST=db_ext' .env
+```
+
+remplazar toda la linea blabla si EMPIEZA con palabra clave
+```bash
+sed -i '/^SQL_HOST=/c SQL_HOST=db_ext' .env
 ```
 
 reemplazar todas estas lineas usando find
