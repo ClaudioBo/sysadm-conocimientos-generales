@@ -5,7 +5,7 @@ textotexto
 #!/bin/bash
 
 # Dirigirse a la carpeta donde esta ubicado el script
-cd $( dirname -- "$BASH_SOURCE"; )
+cd $(dirname "$(readlink -f "$0")")
 
 # Guardar ultimo hash del commit
 PREV_COMMIT=$(git rev-list HEAD -n 1)
