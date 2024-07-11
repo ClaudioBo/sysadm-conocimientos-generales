@@ -21,9 +21,13 @@ cd $SAVETO_DIR
 # Backupear el archivo incremental
 cp $INCREMENTAL_FILE $INCREMENTAL_DATED_FILE
 
-# Subir el backup a servidor de backup
+# Subir el backup a servidor de backup usando credenciales SSH
 scp $ZIP_DATED_FILE claudio@backups.claudiobo.com:/mnt/backups
 scp $INCREMENTAL_DATED_FILE claudio@backups.claudiobo.com:/mnt/backups
+
+# # Alternativa: Subir el backup a servidor de backup por contraseña (inseguro)
+# SSH_PASSWORD=ssh_server_password
+# sshpass -p "$SSH_PASSWORD" scp -r "$ZIP_DATED_FILE.tar.gz" "claudio@backups.claudiobo.com:/mnt/backups"
 
 # Checar si el tamaño de los archivos transferidos es igual al original para eliminarlos
 SIZE_REMOTE_INCREMENTAL_CMD="wc -c /mnt/backups/"$INCREMENTAL_DATED_FILE
