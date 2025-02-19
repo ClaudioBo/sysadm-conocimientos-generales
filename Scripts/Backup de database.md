@@ -16,6 +16,9 @@ mkdir $BACKUPS_DIRECTORY
 tar czvf $BACKUPS_DIRECTORY/$NEW_FILE_NAME.tar.gz $BACKUPS_DIRECTORY/$NEW_FILE_NAME.db
 rm $BACKUPS_DIRECTORY/$NEW_FILE_NAME.db
 
+# Backupeo de volumen de Docker
+NOMBRE_VOLUMEN=proyecto-data && sudo docker run --rm -v "${NOMBRE_VOLUMEN}:/volume-data" -v "backups/${NOMBRE_VOLUMEN}:/backup-data" busybox sh -c 'cp -rv /volume-data/* /backup-data'
+
 # Limpiar backups mayor a 7 dias, manteniendo minimo 7 archivos
 MIN_FILES=7
 FILE_COUNT=$(find "$BACKUPS_DIRECTORY" -type f | wc -l)
