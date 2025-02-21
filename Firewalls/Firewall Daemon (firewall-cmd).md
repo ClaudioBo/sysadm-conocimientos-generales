@@ -34,3 +34,11 @@ y despues inicializar el servicio:
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
 ```
+
+<!--
+```bash
+sudo iptables -I INPUT 1 -p tcp --dport 80 -j ACCEPT
+sudo netfilter-persistent save
+sudo netfilter-persistent reload
+```
+-->
