@@ -23,6 +23,7 @@ Despues de todas las lineas de la sección \***filter**, agregar:
 ```
 Al final del archivo, **despues** de la linea que dice `COMMIT`, agregar la siguiente sección:
 ```sh
+# docker
 *nat
 :POSTROUTING ACCEPT [0:0]
 -A POSTROUTING -s 172.16.42.0/8 -o eth0 -j MASQUERADE
