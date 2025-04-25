@@ -12,7 +12,7 @@ EOF
 ```
 
 ## Permitir que los contenedores de Docker pueda tener internet
-Editarás el archivo `/etc/ufw/before.rules`
+Editarás el archivo `sudo nano /etc/ufw/before.rules`
 Despues de todas las lineas de la sección \***filter**, agregar:
 ```sh
 # reglas de docker para permitir acceso de internet desde el contenedor
@@ -31,5 +31,4 @@ Al final del archivo, **despues** de la linea que dice `COMMIT`, agregar la sigu
 COMMIT
 ```
 
-Despues de guardar el archivo, reiniciar ufw con `sudo ufw disable && sudo ufw enable`
-De paso, tambien reiniciar Docker Engine con `sudo service docker restart`
+Despues de guardar el archivo, reiniciar UFW y Docker con `sudo ufw disable && sudo ufw enable && sudo service docker restart`
