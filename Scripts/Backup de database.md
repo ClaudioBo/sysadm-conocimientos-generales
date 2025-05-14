@@ -17,7 +17,10 @@ tar czvf $BACKUPS_DIRECTORY/$NEW_FILE_NAME.tar.gz $BACKUPS_DIRECTORY/$NEW_FILE_N
 rm $BACKUPS_DIRECTORY/$NEW_FILE_NAME.db
 
 # Backupeo de volumen de Docker
-NOMBRE_VOLUMEN=proyecto-data && sudo docker run --rm -it -v "${NOMBRE_VOLUMEN}:/volume-data" -v "./${NOMBRE_VOLUMEN}:/backup-data" busybox sh -c 'cp -rv /volume-data/* /backup-data' && unset NOMBRE_VOLUMEN
+NOMBRE_VOLUMEN=proyecto-data && sudo docker run --rm -v "${NOMBRE_VOLUMEN}:/volume-data" -v "./${NOMBRE_VOLUMEN}:/backup-data" instrumentisto/rsync-ssh rsync -av /volume-data/ /backup-data/ && unset NOMBRE_VOLUMEN
+
+# # Restaurar jaja
+# NOMBRE_VOLUMEN=proyecto-data && sudo docker run --rm -v "${NOMBRE_VOLUMEN}:/volume-data" -v "./${NOMBRE_VOLUMEN}:/backup-data" instrumentisto/rsync-ssh rsync -av /backup-data/ /volume-data/ && unset NOMBRE_VOLUMEN
 
 # Limpiar backups mayor a 7 dias, manteniendo minimo 7 archivos
 MIN_FILES=7
