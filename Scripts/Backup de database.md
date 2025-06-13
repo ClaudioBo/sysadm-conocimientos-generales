@@ -17,10 +17,10 @@ tar czvf $BACKUPS_DIRECTORY/$NEW_FILE_NAME.tar.gz $BACKUPS_DIRECTORY/$NEW_FILE_N
 rm $BACKUPS_DIRECTORY/$NEW_FILE_NAME.db
 
 # Backupeo de volumen de Docker
-NOMBRE_VOLUMEN=proyecto-data && sudo docker run --rm -v "${NOMBRE_VOLUMEN}:/volume-data" -v "./${NOMBRE_VOLUMEN}:/backup-data" instrumentisto/rsync-ssh rsync -av /volume-data/ /backup-data/ && unset NOMBRE_VOLUMEN
+# NOMBRE_VOLUMEN=proyecto-data && sudo docker run --rm -v "${NOMBRE_VOLUMEN}:/volume-data" -v "./${NOMBRE_VOLUMEN}:/backup-data" instrumentisto/rsync-ssh rsync -av /volume-data/ /backup-data/ && sudo tar -vcf - "${NOMBRE_VOLUMEN}" | xz -9 -v -e > "${NOMBRE_VOLUMEN}.tar.xz" && sudo rm -rf "${NOMBRE_VOLUMEN}/" && unset NOMBRE_VOLUMEN
 
-# # Restaurar jaja
-# NOMBRE_VOLUMEN=proyecto-data && sudo docker run --rm -v "${NOMBRE_VOLUMEN}:/volume-data" -v "./${NOMBRE_VOLUMEN}:/backup-data" instrumentisto/rsync-ssh rsync -av /backup-data/ /volume-data/ && unset NOMBRE_VOLUMEN
+# Restaurar jaja
+# NOMBRE_VOLUMEN=proyecto-data && sudo tar -xvJf "${NOMBRE_VOLUMEN}.tar.xz" && sudo docker run --rm -v "${NOMBRE_VOLUMEN}:/volume-data" -v "./${NOMBRE_VOLUMEN}:/restore-data" instrumentisto/rsync-ssh rsync -av /restore-data/ /volume-data/ && sudo rm -rf "${NOMBRE_VOLUMEN}" && unset NOMBRE_VOLUMEN
 
 # Limpiar backups mayor a 7 dias, manteniendo minimo 7 archivos
 MIN_FILES=7
