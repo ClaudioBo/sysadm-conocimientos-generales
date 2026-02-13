@@ -17,10 +17,10 @@ tar czvf $BACKUPS_DIRECTORY/$NEW_FILE_NAME.tar.gz $BACKUPS_DIRECTORY/$NEW_FILE_N
 rm $BACKUPS_DIRECTORY/$NEW_FILE_NAME.db
 
 # Backupeo de volumen de Docker
-# NOMBRE_VOLUMEN=proyecto-data && sudo docker run --rm -v "${NOMBRE_VOLUMEN}:/volume-data" -v "./${NOMBRE_VOLUMEN}:/backup-data" instrumentisto/rsync-ssh rsync -av /volume-data/ /backup-data/ && sudo tar -cf - "${NOMBRE_VOLUMEN}" | zstd -19 -T0 -v -o "${NOMBRE_VOLUMEN}.tar.zst" && sudo rm -rf "${NOMBRE_VOLUMEN}/" && unset NOMBRE_VOLUMEN
+# NOMBRE_VOLUMEN=proyecto-data && sudo docker run --rm -v "${NOMBRE_VOLUMEN}:/volume-data:ro" alpine sh -c "cd /volume-data && tar --numeric-owner -cvf - ." | zstd -v -19 -T0 -o "${NOMBRE_VOLUMEN}.tar.zst"
 
 # Restaurar jaja
-# NOMBRE_VOLUMEN=proyecto-data && sudo tar --zstd -xvf "${NOMBRE_VOLUMEN}.tar.zst" && sudo docker run --rm -v "${NOMBRE_VOLUMEN}:/volume-data" -v "./${NOMBRE_VOLUMEN}:/restore-data" instrumentisto/rsync-ssh rsync -av /restore-data/ /volume-data/ && sudo rm -rf "${NOMBRE_VOLUMEN}" && unset NOMBRE_VOLUMEN
+# NOMBRE_VOLUMEN=proyecto-data && zstd -d -c "${NOMBRE_VOLUMEN}.tar.zst" | sudo docker run --rm -i -v "${NOMBRE_VOLUMEN}:/volume-data" alpine sh -c "cd /volume-data && tar --numeric-owner -xvf -" && unset NOMBRE_VOLUMEN
 
 # Limpiar backups mayor a 7 dias, manteniendo minimo 7 archivos
 MIN_FILES=7
